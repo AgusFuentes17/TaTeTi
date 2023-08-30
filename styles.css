@@ -1,0 +1,39 @@
+body{
+    background-color: black;
+}
+
+h1{
+    text-align: center;
+    color: rgb(168, 168, 168);
+}
+
+.tablero{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cuadro{
+    display: flex;
+    background: rgb(12, 10, 34);
+	height: 100px;
+	width: 100px;
+	border: solid 1px rgb(168, 168, 168);
+    font-size: 90px;
+    color: rgb(168, 168, 168);
+    cursor: pointer;
+    justify-content: center;
+}
+
+#reseteo{
+  font-size: 25px;
+  padding: 1em;
+  background-color: #0a0027;
+  color: #ffffff;
+  border: none;
+  position: relative;
+  margin: 1.5em auto 0 auto;
+  display: block;
+  cursor: pointer;
+}
