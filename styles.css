@@ -1,39 +1,43 @@
 body{
-    background-color: black;
+background-color: rgb(114, 110, 187);
 }
-
-h1{
+  
+header{
+    background-color: rgb(114, 110, 187);
+    width: 100%;
     text-align: center;
-    color: rgb(168, 168, 168);
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+    font-family: Arial;
 }
 
-.tablero{
+.contenedor {
+    text-align: center;
+}
+    
+.tablero {
     display: grid;
-    justify-content: center;
-    align-content: center;
     grid-template-columns: repeat(3, auto);
+    width: 306px;
+    margin: 50px auto;
 }
+    
+    .celda {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #333333;
+      cursor: pointer;
+      line-height: 100px;
+      font-size: 60px;
+    }
 
-.cuadro{
-    display: flex;
-    background: rgb(12, 10, 34);
-	height: 100px;
-	width: 100px;
-	border: solid 1px rgb(168, 168, 168);
-    font-size: 90px;
-    color: rgb(168, 168, 168);
-    cursor: pointer;
-    justify-content: center;
-}
-
-#reseteo{
-  font-size: 25px;
-  padding: 1em;
-  background-color: #0a0027;
-  color: #ffffff;
-  border: none;
-  position: relative;
-  margin: 1.5em auto 0 auto;
-  display: block;
-  cursor: pointer;
-}
+    .reiniciar{
+        background-color: rgb(21, 19, 59);
+        border: 1px solid rgb(255, 255, 255);
+        height: 45px;
+        width: 100px;
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        cursor: pointer;
+    }
+  
