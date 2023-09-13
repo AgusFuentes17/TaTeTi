@@ -13,10 +13,6 @@ const GANADORES = [
   [2, 4, 6]
 ];
 
-const MENSAJE_GANADOR = `Ganó ${turno}`; 
-
-const MENSAJE_EMPATE = `Empate`;
-
 let jugando = true; 
 let turno = "X"; 
 
@@ -29,32 +25,20 @@ function listeners() {
   document.querySelector('.reiniciar').addEventListener('click', reiniciarJuego);
 }
 
-function mostrarMensaje(mensaje) {
-  MENSAJES.innerHTML = mensaje;
-}
-
-function reiniciarJuego() {
-  jugando = true; 
-  turno = "X"; 
-  vaciarTablero();
-  document.querySelectorAll('.celda').forEach(celda => celda.innerHTML = "");
-  mostrarMensaje("");
-}
-
 function clickearCelda(evento) {
   const celdaClickeada = evento.target;
   if (celdaClickeada.classList.contains('celda')) {
-    const indiceCelda = Array.from(celdaClickeada.parentNode.children).indexOf(celdaClickeada);
-    if (COMBINACIONES[indiceCelda] !== '' || !jugando) {
+    const indice = Array.from(celdaClickeada.parentNode.children).indexOf(celdaClickeada);
+    if (COMBINACIONES[indice] !== '' || !jugando) {
       return false;
     }
-    dibujarCelda(celdaClickeada, indiceCelda);
+    dibujarCelda(celdaClickeada, indice);
     verificarGanador();
   }
 }
 
-function dibujarCelda(celdaClickeada, indiceCelda) {
-  COMBINACIONES[indiceCelda] = turno;
+function dibujarCelda(celdaClickeada, indice) {
+  COMBINACIONES[indice] = turno;
   celdaClickeada.innerHTML = turno;
 }
 
@@ -62,25 +46,25 @@ function verificarGanador() {
   let ganado = false;
   for (let i = 0; i < GANADORES.length; i++) {
     const combinacionGanadora = GANADORES[i];
-    let pos1 = COMBINACIONES[combinacionGanadora[0]];
-    let pos2 = COMBINACIONES[combinacionGanadora[1]];
-    let pos3 = COMBINACIONES[combinacionGanadora[2]];
+    let celda1 = COMBINACIONES[combinacionGanadora[0]];
+    let celda2 = COMBINACIONES[combinacionGanadora[1]];
+    let celda3 = COMBINACIONES[combinacionGanadora[2]];
     
-    if (pos1 !== '' && pos1 === pos2 && pos2 === pos3) {
+    if (celda1 !== '' && celda1 === celda2 && celda2 === celda3) {
       ganado = true;
       break;
     }
   }
   
   if (ganado) {
-    mostrarMensaje(MENSAJE_GANADOR());
+    MENSAJES.innerHTML = `Ganó ${turno}`;
     jugando = false;
     return;
   }
   
   let empatado = !COMBINACIONES.includes("");
   if (empatado) {
-    mostrarMensaje(MENSAJE_EMPATE());
+    MENSAJES.innerHTML = 'Empate';
     jugando = false;
     return;
   }
@@ -89,11 +73,24 @@ function verificarGanador() {
 }
 
 function definirTurno() {
-  turno = turno === "X" ? "O" : "X";
+  if (turno === "X"){
+    turno = "O";
+  }
+  else if(turno === "O"){
+    turno = "X";
+  }
+}
+
+function reiniciarJuego() {
+  jugando = true; 
+  turno = "X"; 
+  vaciarTablero();
+  document.querySelectorAll('.celda').forEach(celda => celda.innerHTML = "");
+  MENSAJES.innerHTML = "";
 }
 
 function vaciarTablero() {
-  for (let i = 0; COMBINACIONES.lenght(); i++) {
+  for (let i = 0; i < COMBINACIONES.length; i++) {
     COMBINACIONES[i] = '';
   }
 }
