@@ -1,4 +1,4 @@
-const MENSAJES = document.querySelector('.mensaje'); 
+const MENSAJES = document.querySelector('.mensaje');
 
 const COMBINACIONES = ["", "", "", "", "", "", "", "", ""]; 
 
