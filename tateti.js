@@ -13,9 +13,9 @@ const GANADORES = [
   [2, 4, 6]
 ];
 
-const MENSAJE_GANADOR = () => `Ganó ${turno}`; 
+const MENSAJE_GANADOR = `Ganó ${turno}`; 
 
-const MENSAJE_EMPATE = () => `Empate`;
+const MENSAJE_EMPATE = `Empate`;
 
 let jugando = true; 
 let turno = "X"; 
@@ -93,8 +93,7 @@ function definirTurno() {
 }
 
 function vaciarTablero() {
-  let i = COMBINACIONES.length;
-  while (i--) {
+  for (let i = 0; COMBINACIONES.lenght(); i++) {
     COMBINACIONES[i] = '';
   }
 }
